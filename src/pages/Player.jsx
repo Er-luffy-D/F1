@@ -3,10 +3,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 import { playerData } from "../components/players/playerData";
+import Car from "../components/players/Car";
 
 const Player = () => {
 	const imageDivRef = useRef(null);
 	const imageRef = useRef(null);
+
+	// const carRef = useRef(null);
+	// const section2Ref = useRef(null);
+
 	const teamColors = {
 		"Red Bull Racing": "#1E41FF",
 		Mercedes: "#00D2BE",
@@ -24,12 +29,16 @@ const Player = () => {
 	gsap.registerPlugin(ScrollTrigger);
 
 	useGSAP(function () {
+		gsap.from(imageRef.current, {
+			x: "6rem",
+			delay: 1.4,
+		});
+
 		gsap.to(imageDivRef.current, {
 			scrollTrigger: {
 				trigger: imageDivRef.current,
-				markers: true,
 				start: "top 32.5%",
-				end: "top -70%",
+				end: "top -60%",
 				pin: true,
 				scrub: true,
 				onUpdate: (elem) => {
@@ -42,6 +51,9 @@ const Player = () => {
 				},
 			},
 		});
+
+		// if (carRef.current && section2Ref.current) {
+		// }
 	});
 	return (
 		<div>
@@ -51,7 +63,7 @@ const Player = () => {
 						ref={imageRef}
 						className="w-full object-cover"
 						src="https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/haas/olibea01/2025haasolibea01right.webp"
-						alt=""
+						alt="F1 Player"
 					/>
 				</div>
 				<div className="relative font-[second]">
@@ -72,7 +84,10 @@ const Player = () => {
 					</div>
 				</div>
 			</div>
-			<div className="section2 h-screen"></div>
+			<div >
+				<Car />
+			</div>
+			<div className="h-screen"></div>
 		</div>
 	);
 };

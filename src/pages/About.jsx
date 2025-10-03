@@ -1,7 +1,11 @@
-const About = () => {
-    return (
-        <div>About</div>
-    )
-}
+import Car from "../components/players/Car";
 
-export default About
+const About = () => {
+	return (
+		<div>
+			<Car />
+		</div>
+	);
+};
+
+export default About;
