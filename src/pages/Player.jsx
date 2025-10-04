@@ -3,14 +3,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 import { playerData } from "../components/players/playerData";
+import Carousel from "../components/players/Carousel";
 import Car from "../components/players/Car";
 
 const Player = () => {
 	const imageDivRef = useRef(null);
 	const imageRef = useRef(null);
 
-	// const carRef = useRef(null);
-	// const section2Ref = useRef(null);
 
 	const teamColors = {
 		"Red Bull Racing": "#1E41FF",
@@ -58,7 +57,7 @@ const Player = () => {
 	return (
 		<div>
 			<div className="section1">
-				<div ref={imageDivRef} className="h-80 overflow-hidden rounded-4xl w-60 absolute top-60 left-90 bg-red-500">
+				<div ref={imageDivRef} className="h-90 overflow-hidden rounded-4xl w-70 absolute top-60 left-90 bg-red-500">
 					<img
 						ref={imageRef}
 						className="w-full object-cover"
@@ -84,10 +83,12 @@ const Player = () => {
 					</div>
 				</div>
 			</div>
-			<div >
+			<div>
 				<Car />
 			</div>
-			<div className="h-screen"></div>
+			<div className="bg-stone-900">
+				<Carousel />
+			</div>
 		</div>
 	);
 };
