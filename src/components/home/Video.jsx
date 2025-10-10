@@ -19,29 +19,51 @@ export const Video = () => {
 	}, []);
 
 	return (
-		<div className="h-full w-full pointer-events-none relative overflow-hidden">
-			{/* Poster (or blurred background) shown until video loads */}
-			<div
-				className={`absolute inset-0 bg-gray-800 transition-opacity duration-700 ${
-					loaded ? "opacity-0" : "opacity-100"
-				}`}
-			/>
+		<>
+			<style jsx global>{`
+				#vignette-overlay {
+					filter: blur(12px);
+					box-shadow: inset 0 0 100px 15px rgba(255, 255, 255, .4);
+					opacity: 0.8;
+					pointer-events: none; /* Allows user interaction with content below */
+				}
+				@keyframes scaleUpDown {
+					0%,
+					100% {
+						transform: scale(1);
+					}
+					50% {
+						transform: scale(1.3);
+					}
+				}
 
-			{/* Dark overlay for readability (optional) */}
-			<div className="absolute inset-0 bg-black/30" />
+				.scale-animate {
+					animation: scaleUpDown 3s ease-in-out infinite;
+				}
+			`}</style>
 
-			{/* Video fades in when ready */}
-			<video
-				ref={videoRef}
-				autoPlay
-				loop
-				muted
-				playsInline
-				preload="metadata"
-				onLoadedData={() => setLoaded(true)}
-				className={`h-full w-full object-cover transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
-				src="f1.mp4"
-			/>
-		</div>
+			<div className="h-full w-full pointer-events-none relative overflow-hidden">
+				<div className="relative  min-h-screen bg-black overflow-hidden font-sans">
+					<div className="scale-animate absolute inset-0 h-1/3 w-1/3 rounded-4xl top-50 left-130 bg-[url(/road.png)] blur-3xl backdrop-blur-3xl"></div>
+					<div id="vignette-overlay" className="absolute inset-0"></div>
+				</div>
+				<div className="absolute inset-0 bg-black/30" />
+
+				{/* Video fades in when ready */}
+				<video
+					ref={videoRef}
+					autoPlay
+					loop
+					muted
+					playsInline
+					preload="metadata"
+					onLoadedData={() => setLoaded(true)}
+					className={`h-full w-full object-cover transition-opacity duration-700 ${
+						loaded ? "opacity-100" : "opacity-0"
+					}`}
+					src="f.mp4"
+				/>
+			</div>
+		</>
 	);
 };
