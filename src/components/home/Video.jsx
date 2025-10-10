@@ -61,7 +61,7 @@ export const Video = () => {
 					className={`h-full w-full object-cover transition-opacity duration-700 ${
 						loaded ? "opacity-100" : "opacity-0"
 					}`}
-					src="f.mp4"
+					src="f1.mp4"
 				/>
 			</div>
 		</>
