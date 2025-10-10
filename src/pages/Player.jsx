@@ -10,7 +10,6 @@ const Player = () => {
 	const imageDivRef = useRef(null);
 	const imageRef = useRef(null);
 
-
 	const teamColors = {
 		"Red Bull Racing": "#1E41FF",
 		Mercedes: "#00D2BE",
@@ -24,7 +23,6 @@ const Player = () => {
 		Haas: "#B6BABD",
 	};
 
-	// for scroll trigger
 	gsap.registerPlugin(ScrollTrigger);
 
 	useGSAP(function () {
@@ -86,7 +84,7 @@ const Player = () => {
 			<div>
 				<Car />
 			</div>
-			<div className="bg-stone-900">
+			<div className="bg-stone-900 h-screen">
 				<Carousel />
 			</div>
 		</div>

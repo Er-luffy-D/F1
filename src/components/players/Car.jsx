@@ -13,7 +13,7 @@ const Car = () => {
 		tl.to(carRef.current, {
 			x: "-130rem",
 			y: "40rem",
-			ease: "none",
+			ease: "power1.out",
 			scrollTrigger: {
 				trigger: ".mixe",
 				start: "top center",
@@ -23,7 +23,7 @@ const Car = () => {
 		});
 		ScrollTrigger.create({
 			trigger: ".mixe",
-			start: "top top", 
+			start: "top top",
 			end: "bottom top",
 			onEnter: () =>
 				gsap.to(".mixe", {
@@ -37,8 +37,8 @@ const Car = () => {
 
 	return (
 		<div>
-			<div className="relative mixe w-full h-[120vh] rgb(0,0,0,0) ">
-				<div ref={carRef} className="w-[35vw] absolute top-[-30rem] z-20 -right-96 h-96 ">
+			<div className="pointer-events-none relative mixe w-full h-[120vh] rgb(0,0,0,0) ">
+				<div ref={carRef} className="w-[30vw] absolute top-[-28rem] z-20 -right-96 h-96 ">
 					<img ref={imageRef} src="car1.png" className="w-full object-cover rotate-[-110deg]" />
 				</div>
 				<div className="h-[130vh] w-screen rotate-[-10deg] scale-x-150 scale-y-75 flex justify-center absolute items-center bg-[url('/road.png')] bg-cover bg-center  "></div>
