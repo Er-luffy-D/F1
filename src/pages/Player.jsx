@@ -55,11 +55,11 @@ const Player = () => {
 	return (
 		<div>
 			<div className="section1">
-				<div ref={imageDivRef} className="h-90 overflow-hidden rounded-4xl w-70 absolute top-60 left-90 bg-red-500">
+				<div ref={imageDivRef} className="h-90 overflow-hidden rounded-4xl w-70 absolute top-60 left-90 bg-#DC0000">
 					<img
 						ref={imageRef}
 						className="w-full object-cover"
-						src="https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/haas/olibea01/2025haasolibea01right.webp"
+						src={playerData[0]}
 						alt="F1 Player"
 					/>
 				</div>
