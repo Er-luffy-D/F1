@@ -23,7 +23,7 @@ export const Video = () => {
 			<style jsx global>{`
 				#vignette-overlay {
 					filter: blur(12px);
-					box-shadow: inset 0 0 100px 15px rgba(255, 255, 255, .4);
+					box-shadow: inset 0 0 100px 15px rgba(255, 255, 255, 0.4);
 					opacity: 0.8;
 					pointer-events: none; /* Allows user interaction with content below */
 				}
@@ -43,12 +43,15 @@ export const Video = () => {
 			`}</style>
 
 			<div className="h-full w-full pointer-events-none relative overflow-hidden">
-				<div className="relative  min-h-screen bg-black overflow-hidden font-sans">
-					<div className="scale-animate absolute inset-0 h-1/3 w-1/3 rounded-4xl top-50 left-130 bg-[url(/road.png)] blur-3xl backdrop-blur-3xl"></div>
-					<div id="vignette-overlay" className="absolute inset-0"></div>
-				</div>
-				<div className="absolute inset-0 bg-black/30" />
-
+				{!loaded && (
+					<>
+						<div className="relative  min-h-screen bg-black overflow-hidden font-sans">
+							<div className="scale-animate absolute inset-0 h-1/3 w-1/3 rounded-4xl top-50 left-130 bg-[url(/road.png)] blur-3xl backdrop-blur-3xl"></div>
+							<div id="vignette-overlay" className="absolute inset-0"></div>
+						</div>
+						<div className="absolute inset-0 bg-black/30" />
+					</>
+				)}
 				{/* Video fades in when ready */}
 				<video
 					ref={videoRef}
