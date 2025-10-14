@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { NavbarContext } from "../../context/NavContext";
 
-const F1 = () => {
+export const F1 = () => {
 	return (
 		<svg viewBox="0 0 1600 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" className="h-full w-full">
 			<title>F1</title>
@@ -20,9 +21,14 @@ const F1 = () => {
 };
 
 const Navbar = () => {
+	const [navOpen, setnavOpen] = useContext(NavbarContext);
+	console.log(navOpen);
 	const navRef = useRef(null);
+	const toggleNav = () => {
+		setnavOpen(true);
+	};
 	return (
-		<div className="z-4  flex fixed top-0 w-full items-start justify-between">
+		<div className="z-1 flex fixed top-0 w-full items-start justify-between">
 			<div className="p-2">
 				<div className="w-34 ">
 					<F1 />
@@ -35,7 +41,8 @@ const Navbar = () => {
 				onMouseLeave={() => {
 					navRef.current.style.height = "0%";
 				}}
-				className="h-12 w-57	 bg-black relative group"
+				className="h-12 w-57 cursor-pointer	 bg-black relative group"
+				onClick={toggleNav}
 			>
 				<div ref={navRef} className="bg-[#D3FD50] transition-all absolute top-0 h-0 w-full"></div>
 				<div className=" relative">

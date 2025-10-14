@@ -2,9 +2,26 @@
 
 @font-face {
 	font-family: first;
-	src: url(/fonts/Lausanne-300.woff2);
+	src: url(../public/fonts/Lausanne-300.woff2);
 }
 @font-face {
 	font-family: second;
-	src: url(/fonts/Lausanne-500.woff2);
+	src: url(../public/fonts/Lausanne-500.woff2);
+}
+
+@font-face {
+	font-family: third;
+	src: url(../public/fonts/Anta-Regular.ttf);
+}
+
+@keyframes moveAnimation {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+.moveX {
+	animation: moveAnimation 15s infinite linear;
 }
