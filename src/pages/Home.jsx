@@ -2,7 +2,9 @@ import { Video } from "../components/home/Video";
 import { HomeHeroText } from "../components/home/HomeHeroText";
 import { HomeBottomText } from "../components/home/HomeBottomText";
 import { HomeMiddleText } from "../components/home/HomeMiddleText";
+import { useState } from "react";
 const Home = () => {
+	const [loading, setloading] = useState(true);
 	return (
 		<div>
 			<div className="h-screen w-screen fixed">

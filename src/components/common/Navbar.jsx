@@ -22,7 +22,6 @@ export const F1 = () => {
 
 const Navbar = () => {
 	const [navOpen, setnavOpen] = useContext(NavbarContext);
-	console.log(navOpen);
 	const navRef = useRef(null);
 	const toggleNav = () => {
 		setnavOpen(true);
