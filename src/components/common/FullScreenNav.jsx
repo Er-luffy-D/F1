@@ -1,11 +1,13 @@
-import { CrossIcon, X } from "lucide-react";
+import { CrossIcon, Globe, Globe2, X } from "lucide-react";
 import { F1 } from "./Navbar";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavbarContext } from "../../context/NavContext";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 const FullScreenNav = () => {
+	const [time, setTime] = useState("");
+
 	const [navOpen, setnavOpen] = useContext(NavbarContext);
 	const fullscreenRef = useRef(null);
 	const navItems = [
@@ -45,6 +47,19 @@ const FullScreenNav = () => {
 		},
 	];
 	const fullScreen = useRef(null);
+	useEffect(() => {
+		if (!navOpen) return;
+
+		const updateTime = () => {
+			const newTime = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+			setTime(newTime);
+		};
+
+		updateTime(); // immediate update when opening
+		const interval = setInterval(updateTime, 1000);
+
+		return () => clearInterval(interval);
+	}, [navOpen]);
 	function gsapAnimation() {
 		const tl = gsap.timeline();
 		tl.to(".fullscreennav", {
@@ -61,12 +76,20 @@ const FullScreenNav = () => {
 		tl.to(".navlink", {
 			opacity: 1,
 		});
-		tl.to(".link", {
-			opacity: 1,
-			rotateX: 0,
-			stagger: {
-				amount: 0.3,
+
+		tl.to(
+			".link",
+			{
+				opacity: 1,
+				rotateX: 0,
+				stagger: {
+					amount: 0.3,
+				},
 			},
+			"<"
+		);
+		tl.to(".footer", {
+			opacity: 1,
 		});
 	}
 	function gsapAnimationReverse() {
@@ -78,9 +101,20 @@ const FullScreenNav = () => {
 				amount: 0.1,
 			},
 		});
-		tl.to(".navlink", {
-			opacity: 0,
-		});
+		tl.to(
+			".navlink",
+			{
+				opacity: 0,
+			},
+			"<"
+		);
+		tl.to(
+			".footer",
+			{
+				opacity: 0,
+			},
+			"<"
+		);
 		tl.to(".stairing", {
 			height: 0,
 			stagger: {
@@ -135,7 +169,7 @@ const FullScreenNav = () => {
 						<div className="group-hover:bg-[#D3FD50] bg-white h-28 w-0.5 absolute origin-top rotate-45 right-0"></div>
 					</div>
 				</div>
-				<div className="py-40">
+				<div className="pt-40 pb-24">
 					{navItems.map((i, _) => {
 						return (
 							<Link key={_} to={i.path} onClick={toggleNav}>
@@ -178,6 +212,12 @@ const FullScreenNav = () => {
 							</Link>
 						);
 					})}
+				</div>
+				<div className="footer h-12 w-full  flex align-middle justify-between">
+					<p className="font-[third] hover:text-green-400 text-3xl pl-1 -leading-3">INDIA : {time}</p>
+					<p>
+						<Globe className="w-14 scale-125 hover:text-green-400 " />
+					</p>
 				</div>
 			</div>
 		</div>
