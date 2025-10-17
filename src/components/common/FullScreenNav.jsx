@@ -142,12 +142,9 @@ const FullScreenNav = () => {
 	};
 
 	return (
-		<div
-			ref={fullscreenRef}
-			className="h-screen hidden absolute fullscreennav  z-50 w-full overflow-hidden  text-white  "
-		>
+		<div ref={fullscreenRef} className="h-screen hidden fixed fullscreennav z-50 w-full overflow-hidden  text-white  ">
 			{/* stairs */}
-			<div className="h-screen w-full  fixed ">
+			<div className="h-screen w-full fixed ">
 				<div className="h-full w-full flex">
 					<div className="stairing h-full w-1/5 bg-black"></div>
 					<div className="stairing h-full w-1/5 bg-black"></div>
@@ -213,11 +210,13 @@ const FullScreenNav = () => {
 						);
 					})}
 				</div>
-				<div className="footer h-12 w-full  flex align-middle justify-between">
+				<div className="footer h-12 w-full flex align-middle justify-between">
 					<p className="font-[third] hover:text-green-400 text-3xl pl-1 -leading-3">INDIA : {time}</p>
-					<p>
-						<Globe className="w-14 scale-125 hover:text-green-400 " />
-					</p>
+					<a href="https://builtbypiyush.me/" target="_blank">
+						<p>
+							<Globe className="w-14 scale-125 hover:text-green-400 " />
+						</p>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -25,3 +25,19 @@
 .moveX {
 	animation: moveAnimation 15s infinite linear;
 }
+@keyframes moveBackground {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -240px 240px;
+	}
+}
+
+.graph {
+	animation: moveBackground 2s linear infinite;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+}

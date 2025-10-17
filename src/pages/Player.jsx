@@ -48,19 +48,12 @@ const Player = () => {
 				},
 			},
 		});
-
-		// if (carRef.current && section2Ref.current) {
-		// }
 	});
 	return (
 		<div className="h-full w-full py-2">
 			<div className="section1">
 				<div ref={imageDivRef} className="h-90 overflow-hidden rounded-4xl w-70 absolute top-60 left-90 bg-[#DC0000]">
-					<img
-						ref={imageRef}
-						className="w-full object-cover"
-						src={playerData[0].image_url} alt="F1 Player"
-					/>
+					<img ref={imageRef} className="w-full object-cover" src={playerData[0].image_url} alt="F1 Player" />
 				</div>
 				<div className="relative font-[second]">
 					<div className=" mt-[50vh] ">

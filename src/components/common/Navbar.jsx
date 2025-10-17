@@ -27,7 +27,7 @@ const Navbar = () => {
 		setnavOpen(true);
 	};
 	return (
-		<div className="z-1 flex fixed top-0 w-full items-start justify-between">
+		<div className="flex z-21  fixed top-0 w-full items-start justify-between">
 			<div className="p-2">
 				<div className="w-34 ">
 					<F1 />

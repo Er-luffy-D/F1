@@ -20,18 +20,20 @@ export const Video = () => {
 
 	return (
 		<>
-			<div className="h-full w-full pointer-events-none relative overflow-hidden">
+			<div className="h-full w-full pointer-events-none relative overflow-hidden bg-red-500/80 ">
 				{/* Video fades in when ready */}
 				{!loaded && (
-					<video
-						autoPlay
-						loop
-						muted
-						playsInline
-						preload="metadata"
-						className={`h-full w-full object-cover transition-opacity duration-700 `}
-						src="loading.mp4"
-					/>
+					<>
+						<video
+							autoPlay
+							loop
+							muted
+							playsInline
+							preload="metadata"
+							className={`h-full w-full object-cover transition-opacity duration-700  `}
+							src="loading.mp4"
+						/>
+					</>
 				)}
 				<video
 					ref={videoRef}
